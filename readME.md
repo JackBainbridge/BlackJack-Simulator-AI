@@ -45,19 +45,27 @@ SQLite Version: 3.45.1
 Environment check passed!
 ```
 
-### CommandLine Arguments
-./BlackJackAI [Train-AI-or-Not] [Play-Manual-or-Not]
+### CommandLine Arguments 🤝
+```
+./BlackJackAI [Train-AI-or-Not] [Play-Manual-or-Not] [Display-GUI]
+```
 
 **Train-AI-or-Not**: 0 = Train, 1 = Load.
+
 **Play-Manual-or-Not**: 0 = Manual (You Play), 1 = AI (AI Plays)
 
+**Display-GUI**: 0 = Console, 1 = GUI
+
 Example to play game, train before game and play manually: 
-```./BlackJackAI 0 0```
+```./BlackJackAI 0 0 0```
 
-Example to play game, load from existing db file and AI will  play: 
-```./BlackJackAI 1 1```
+Example to play game, load from existing db file and AI will play: 
+```./BlackJackAI 1 1 0```
 
-### Q-Learning Implementation 
+Example to play game with GUI, train before game and play manually:
+```./BlackJackAI 0 0 1```
+
+### Q-Learning Implementation 🧠
 **State Definition:** 
 Each game state is represented by three values:
 
@@ -85,3 +93,6 @@ Silent Trainer (runSilentTrainer()) runs 250,000 simulated hands where:
 
 **After Training**
 Once trained, the Q-Table is saved to a SQLite database (blackjack_brain.db). When you play, the AI looks up each state in the Q-Table and uses the learned knowledge to make decisions — no randomness, just playing optimally.
+
+### Game Screen
+![Game Sample](/assets/docs/game_sample.png)

@@ -1,3 +1,31 @@
+/**
+ * @brief Main entry point for the Blackjack AI application.
+ * 
+ * Initializes the Q-Learning AI agent, handles training/loading of the AI model,
+ * and manages the game loop for playing blackjack rounds. Supports multiple modes
+ * of operation via command-line arguments.
+ * 
+ * @param argc Number of command-line arguments.
+ * @param argv Array of command-line argument strings:
+ *             - argv[1]: trainMode (0 = Train new model, 1 = Load existing model)
+ *             - argv[2]: playMode (0 = Manual player, 1 = AI player)
+ *             - argv[3]: guiMode (0 = Console output, 1 = GUI rendering with OpenCV)
+ * 
+ * @return int EXIT_SUCCESS (0) on successful completion, or non-zero on error.
+ * 
+ * @details
+ *   - Initializes the QLearner AI with a SQLite database for Q-value persistence.
+ *   - Trains the AI using silent training (250,000 iterations) if no database exists.
+ *   - Supports three combinations of play modes:
+ *     - Manual + Console: Player makes decisions via keyboard input.
+ *     - Manual + GUI: Player makes decisions via GUI interface.
+ *     - AI + Console/GUI: AI makes decisions based on learned Q-values.
+ *   - Runs an interactive game loop allowing multiple rounds until user exits.
+ * 
+ * @note Requires environment setup with SQLite3 library and OpenCV (if GUI mode enabled).
+ * @note Database file "blackjack_brain.db" is created/loaded from the current working directory.
+ * @note Memory for GUI renderer is dynamically allocated and freed upon program exit.
+ */
 #include <iostream>
 #include <vector>
 #include <string>
@@ -13,6 +41,21 @@
 #include "Renderer.h"
 #include <opencv2/opencv.hpp>
 
+/**
+ * @brief Executes a single round of blackjack with AI player and optional GUI rendering.
+ * 
+ * @param ai A reference to the QLearner object that controls the AI player's decisions
+ *           based on learned Q-values from previous training.
+ * @param playMode An integer flag determining the game mode (e.g., training, testing,
+ *                  or interactive play).
+ * @param gui A pointer to the Renderer object used for displaying game state, cards,
+ *            and results. If nullptr, the round may proceed without visual output.
+ * 
+ * @return void
+ * 
+ * @note Modifies the state of the QLearner object during the round.
+ * @note gui may be nullptr for headless execution.
+ */
 void playRound(QLearner& ai, int playMode, Renderer* gui) {
     std::cout << "Starting a new round of Blackjack..." << std::endl;
 

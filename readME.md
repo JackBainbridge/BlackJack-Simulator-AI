@@ -2,7 +2,7 @@
 
 Each player and dealer in the blackjack with AI game has a hand in playing cards. The AI algorithm that controls the game decides what to do based on the cards in each player's hand. The blackjack with AI project explores the implementation of AI in Blackjack using C++. The Monte Carlo method is a well-known technique of learning by simulated trial and error, while the Q-Learning algorithm is a form of reinforcement learning.
 
-### Technologies Required: 
+### Technologies Required 🖥️
 - C++ programming language
 - Object Oriented Programming (OOPS)
 - Data Structures & Algorithms
@@ -12,9 +12,10 @@ Each player and dealer in the blackjack with AI game has a hand in playing cards
 - Reinforcement Learning Algorithms: Q Learning, and Machine Learning.
 - Graphical User Interface (GUI)
 
-### Building the Project
+### Building the Project 🛠️
 
 - From the /build directory, execute the CMakeLists.txt file at the root of the project via ```cmake ..```.
+- Once CMakeLists has been executed, run ```make``` from the /build directory to build and executable BlackjackAI file.
 
 This should generate an output similar to the following and other files required in the /build directory:
 ```
@@ -39,8 +40,7 @@ This should generate an output similar to the following and other files required
 -- Build files have been written to: /mnt/c/Development/Projects/C++_BlackJack/build
 ```
 
-- Once CMakeLists has been executed, run ```make``` from the /build directory to build and executable BlackjackAI file.
-
+### Running the Project 🚀
 - Once built, we can execute it.
 
 ```

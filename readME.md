@@ -13,7 +13,7 @@ Each player and dealer in the blackjack with AI game has a hand in playing cards
 - Graphical User Interface (GUI)
 
 ### Building the Project 🛠️
-
+- Create the build directory via ```mkdir build``` from the project root.
 - From the /build directory, execute the CMakeLists.txt file at the root of the project via ```cmake ..```.
 - Once CMakeLists has been executed, run ```make``` from the /build directory to build and executable BlackjackAI file.
 
@@ -38,6 +38,15 @@ This should generate an output similar to the following and other files required
 -- Configuring done (2.3s)
 -- Generating done (0.1s)
 -- Build files have been written to: /mnt/c/Development/Projects/C++_BlackJack/build
+```
+
+### Hard reset if build issues 🔁
+- clean the build environment to ensure CMake actually sees your changes.
+```
+cd /mnt/c/Development/Projects/C++_BlackJack/build
+rm -rf *
+cmake ..
+make
 ```
 
 ### Running the Project 🚀

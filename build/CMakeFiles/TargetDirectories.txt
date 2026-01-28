@@ -1,3 +1,0 @@
-/mnt/c/Development/Projects/C++_BlackJack/build/CMakeFiles/BlackjackAI.dir
-/mnt/c/Development/Projects/C++_BlackJack/build/CMakeFiles/edit_cache.dir
-/mnt/c/Development/Projects/C++_BlackJack/build/CMakeFiles/rebuild_cache.dir

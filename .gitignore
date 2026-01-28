@@ -1,0 +1,35 @@
+# Build and CMake files
+build/
+cmake_install.cmake
+CMakeCache.txt
+CMakeFiles/
+Makefile
+
+# Compiled object files
+*.o
+*.obj
+*.a
+*.lib
+*.so
+*.dylib
+*.dll
+
+# Executables
+BlackjackAI
+*.exe
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Dependencies (if applicable)
+/third_party/
+/lib/
+
+# Temporary and backup files
+*.tmp
+*.bak

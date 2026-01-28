@@ -19,6 +19,8 @@ add_executable(BlackjackAI
     src/Deck.cpp 
     src/Card.cpp 
     src/Hand.cpp
+    src/QLearner.cpp
+    src/Trainer.cpp
 )
 # src/AI.cpp
 

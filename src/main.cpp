@@ -4,13 +4,15 @@
 #include <algorithm>
 #include <random>
 #include <chrono>
+#include <sqlite3.h>
 #include "Card.h"
 #include "Deck.h"
 #include "Hand.h"
-#include <sqlite3.h>
+#include "QLearner.h"
+#include "Trainer.h"
 #include <opencv2/opencv.hpp>
 
-void playRound() {
+void playRound(QLearner& ai, int playMode) {
     // Placeholder for game logic
     std::cout << "Starting a new round of Blackjack..." << std::endl;
 
@@ -30,18 +32,25 @@ void playRound() {
     std::cout << "Dealer shows: " << dealerHand.getCard(0).toString() << " [Hidden]" << std::endl;
 
     // Player Turn
-    while (true) {
-        std::cout << "Your total: " << playerHand.getTotal() << " | (h)it or (s)tand? ";
-        char choice;
-        std::cin >> choice;
+    while (!playerHand.isBust()) {
+        int action;
+        std::cout << "Player Cards: " << playerHand.getCard(0).toString() << ", " << playerHand.getCard(1).toString() << std::endl;
+        std::cout << "Player Total: " << playerHand.getTotal() << std::endl;
 
-        if (choice == 'h') {
+        if (playMode == 0) { // MANUAL MODE
+            std::cout << "(h)it or (s)tand? ";
+            char choice; std::cin >> choice;
+            action = (choice == 'h') ? 1 : 0;
+        } 
+        else { // AI MODE
+            State s = { playerHand.getTotal(), dealerHand.getCard(0).getValue(), false };
+            action = ai.decide(s, false); // No randomness
+            std::cout << "AI decides to: " << (action == 1 ? "HIT" : "STAND") << std::endl;
+        }
+
+        if (action == 1) {
             playerHand.addCard(deck.dealCard());
-            std::cout << "You drew: " << playerHand.getCard(playerHand.getSize() - 1).toString() << std::endl;
-            if (playerHand.isBust()) {
-                std::cout << "BUST! Total: " << playerHand.getTotal() << ". Dealer wins." << std::endl;
-                return;
-            }
+            std::cout << "Drew: " << playerHand.getCard(playerHand.getSize() - 1).toString() << std::endl;
         } else {
             break;
         }
@@ -72,7 +81,7 @@ void playRound() {
     std::cout << "Round finished." << std::endl;
 }
 
-int main() {
+int main(int argc, char* argv[]) {
     // Validate the environment setup
     std::cout << "--- Blackjack AI Initializing ---" << std::endl;
 
@@ -85,11 +94,35 @@ int main() {
                 cv::FONT_HERSHEY_SIMPLEX, 1, cv::Scalar(0, 255, 0), 2);
     
     std::cout << "Environment check passed!" << std::endl;
+    // ----------------------------------------------------------------------------
+    QLearner myAI;
+    std::string dbFile = "blackjack_brain.db";
 
-    // Start Game
+    // Defaults
+    int trainMode = 0; // Train
+    int playMode = 0;  // Manual
+
+    if (argc > 1) trainMode = std::stoi(argv[1]);
+    if (argc > 2) playMode = std::stoi(argv[2]);
+
+    // Handle Training/Loading - if empty DB, train first 250k hands
+    if (trainMode == 0) {
+        std::cout << "--- [MODE: FORCE TRAINING] ---" << std::endl;
+        runSilentTrainer(myAI, 250000); 
+        myAI.saveToDatabase(dbFile);
+    } else {
+        myAI.loadFromDatabase(dbFile);
+        if (myAI.qTable.empty()) {
+            runSilentTrainer(myAI, 250000);
+            myAI.saveToDatabase(dbFile);
+        }
+    }
+
+    // Start Game Loop
     char playAgain = 'y';
     while (playAgain == 'y') {
-        playRound();
+        // Pass the playMode to the game loop
+        playRound(myAI, playMode); 
         std::cout << "\nPlay another round? (y/n): ";
         std::cin >> playAgain;
     }

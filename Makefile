@@ -129,6 +129,150 @@ BlackjackAI/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/BlackjackAI.dir/build.make CMakeFiles/BlackjackAI.dir/build
 .PHONY : BlackjackAI/fast
 
+src/Card.o: src/Card.cpp.o
+.PHONY : src/Card.o
+
+# target to build an object file
+src/Card.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/BlackjackAI.dir/build.make CMakeFiles/BlackjackAI.dir/src/Card.cpp.o
+.PHONY : src/Card.cpp.o
+
+src/Card.i: src/Card.cpp.i
+.PHONY : src/Card.i
+
+# target to preprocess a source file
+src/Card.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/BlackjackAI.dir/build.make CMakeFiles/BlackjackAI.dir/src/Card.cpp.i
+.PHONY : src/Card.cpp.i
+
+src/Card.s: src/Card.cpp.s
+.PHONY : src/Card.s
+
+# target to generate assembly for a file
+src/Card.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/BlackjackAI.dir/build.make CMakeFiles/BlackjackAI.dir/src/Card.cpp.s
+.PHONY : src/Card.cpp.s
+
+src/Deck.o: src/Deck.cpp.o
+.PHONY : src/Deck.o
+
+# target to build an object file
+src/Deck.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/BlackjackAI.dir/build.make CMakeFiles/BlackjackAI.dir/src/Deck.cpp.o
+.PHONY : src/Deck.cpp.o
+
+src/Deck.i: src/Deck.cpp.i
+.PHONY : src/Deck.i
+
+# target to preprocess a source file
+src/Deck.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/BlackjackAI.dir/build.make CMakeFiles/BlackjackAI.dir/src/Deck.cpp.i
+.PHONY : src/Deck.cpp.i
+
+src/Deck.s: src/Deck.cpp.s
+.PHONY : src/Deck.s
+
+# target to generate assembly for a file
+src/Deck.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/BlackjackAI.dir/build.make CMakeFiles/BlackjackAI.dir/src/Deck.cpp.s
+.PHONY : src/Deck.cpp.s
+
+src/Hand.o: src/Hand.cpp.o
+.PHONY : src/Hand.o
+
+# target to build an object file
+src/Hand.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/BlackjackAI.dir/build.make CMakeFiles/BlackjackAI.dir/src/Hand.cpp.o
+.PHONY : src/Hand.cpp.o
+
+src/Hand.i: src/Hand.cpp.i
+.PHONY : src/Hand.i
+
+# target to preprocess a source file
+src/Hand.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/BlackjackAI.dir/build.make CMakeFiles/BlackjackAI.dir/src/Hand.cpp.i
+.PHONY : src/Hand.cpp.i
+
+src/Hand.s: src/Hand.cpp.s
+.PHONY : src/Hand.s
+
+# target to generate assembly for a file
+src/Hand.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/BlackjackAI.dir/build.make CMakeFiles/BlackjackAI.dir/src/Hand.cpp.s
+.PHONY : src/Hand.cpp.s
+
+src/QLearner.o: src/QLearner.cpp.o
+.PHONY : src/QLearner.o
+
+# target to build an object file
+src/QLearner.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/BlackjackAI.dir/build.make CMakeFiles/BlackjackAI.dir/src/QLearner.cpp.o
+.PHONY : src/QLearner.cpp.o
+
+src/QLearner.i: src/QLearner.cpp.i
+.PHONY : src/QLearner.i
+
+# target to preprocess a source file
+src/QLearner.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/BlackjackAI.dir/build.make CMakeFiles/BlackjackAI.dir/src/QLearner.cpp.i
+.PHONY : src/QLearner.cpp.i
+
+src/QLearner.s: src/QLearner.cpp.s
+.PHONY : src/QLearner.s
+
+# target to generate assembly for a file
+src/QLearner.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/BlackjackAI.dir/build.make CMakeFiles/BlackjackAI.dir/src/QLearner.cpp.s
+.PHONY : src/QLearner.cpp.s
+
+src/Renderer.o: src/Renderer.cpp.o
+.PHONY : src/Renderer.o
+
+# target to build an object file
+src/Renderer.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/BlackjackAI.dir/build.make CMakeFiles/BlackjackAI.dir/src/Renderer.cpp.o
+.PHONY : src/Renderer.cpp.o
+
+src/Renderer.i: src/Renderer.cpp.i
+.PHONY : src/Renderer.i
+
+# target to preprocess a source file
+src/Renderer.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/BlackjackAI.dir/build.make CMakeFiles/BlackjackAI.dir/src/Renderer.cpp.i
+.PHONY : src/Renderer.cpp.i
+
+src/Renderer.s: src/Renderer.cpp.s
+.PHONY : src/Renderer.s
+
+# target to generate assembly for a file
+src/Renderer.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/BlackjackAI.dir/build.make CMakeFiles/BlackjackAI.dir/src/Renderer.cpp.s
+.PHONY : src/Renderer.cpp.s
+
+src/Trainer.o: src/Trainer.cpp.o
+.PHONY : src/Trainer.o
+
+# target to build an object file
+src/Trainer.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/BlackjackAI.dir/build.make CMakeFiles/BlackjackAI.dir/src/Trainer.cpp.o
+.PHONY : src/Trainer.cpp.o
+
+src/Trainer.i: src/Trainer.cpp.i
+.PHONY : src/Trainer.i
+
+# target to preprocess a source file
+src/Trainer.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/BlackjackAI.dir/build.make CMakeFiles/BlackjackAI.dir/src/Trainer.cpp.i
+.PHONY : src/Trainer.cpp.i
+
+src/Trainer.s: src/Trainer.cpp.s
+.PHONY : src/Trainer.s
+
+# target to generate assembly for a file
+src/Trainer.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/BlackjackAI.dir/build.make CMakeFiles/BlackjackAI.dir/src/Trainer.cpp.s
+.PHONY : src/Trainer.cpp.s
+
 src/main.o: src/main.cpp.o
 .PHONY : src/main.o
 
@@ -162,6 +306,24 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... BlackjackAI"
+	@echo "... src/Card.o"
+	@echo "... src/Card.i"
+	@echo "... src/Card.s"
+	@echo "... src/Deck.o"
+	@echo "... src/Deck.i"
+	@echo "... src/Deck.s"
+	@echo "... src/Hand.o"
+	@echo "... src/Hand.i"
+	@echo "... src/Hand.s"
+	@echo "... src/QLearner.o"
+	@echo "... src/QLearner.i"
+	@echo "... src/QLearner.s"
+	@echo "... src/Renderer.o"
+	@echo "... src/Renderer.i"
+	@echo "... src/Renderer.s"
+	@echo "... src/Trainer.o"
+	@echo "... src/Trainer.i"
+	@echo "... src/Trainer.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"

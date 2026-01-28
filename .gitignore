@@ -18,6 +18,9 @@ Makefile
 BlackjackAI
 *.exe
 
+# SQLite database files
+blackjack_brain.db
+
 # IDE and editor files
 .vscode/
 .idea/

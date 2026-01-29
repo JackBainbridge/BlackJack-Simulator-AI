@@ -75,15 +75,29 @@ void Renderer::loadAssets() {
 
 void Renderer::drawCard(int x, int y, const Card& card, bool hidden) {
     if (hidden) {
-        // Draw a card back (blue rectangle with pattern)
-        cv::rectangle(table, cv::Point(x, y), 
-                     cv::Point(x + CARD_WIDTH, y + CARD_HEIGHT), 
-                     cv::Scalar(200, 100, 0), -1);
-        cv::rectangle(table, cv::Point(x, y), 
-                     cv::Point(x + CARD_WIDTH, y + CARD_HEIGHT), 
-                     cv::Scalar(255, 200, 0), 2);
-        cv::putText(table, "?", cv::Point(x + CARD_WIDTH/2 - 10, y + CARD_HEIGHT/2 + 10),
-                   cv::FONT_HERSHEY_SIMPLEX, 1.5, cv::Scalar(255, 255, 255), 2);
+        // Draw the back of a card using red_joker.png
+        cv::Mat cardBack = cv::imread("assets/cards/red_joker.png");
+        if (cardBack.empty()) {
+            // Fallback to blue rectangle if image not found
+            cv::rectangle(table, cv::Point(x, y), 
+                         cv::Point(x + CARD_WIDTH, y + CARD_HEIGHT), 
+                         cv::Scalar(200, 100, 0), -1);
+            cv::rectangle(table, cv::Point(x, y), 
+                         cv::Point(x + CARD_WIDTH, y + CARD_HEIGHT), 
+                         cv::Scalar(255, 200, 0), 2);
+            cv::putText(table, "?", cv::Point(x + CARD_WIDTH/2 - 10, y + CARD_HEIGHT/2 + 10),
+                       cv::FONT_HERSHEY_SIMPLEX, 1.5, cv::Scalar(255, 255, 255), 2);
+        } else {
+            // Resize to card size and draw
+            cv::resize(cardBack, cardBack, cv::Size(CARD_WIDTH, CARD_HEIGHT));
+            cv::Mat roi = table(cv::Rect(x, y, CARD_WIDTH, CARD_HEIGHT));
+            cardBack.copyTo(roi);
+            
+            // Draw border around the card
+            cv::rectangle(table, cv::Point(x, y), 
+                         cv::Point(x + CARD_WIDTH, y + CARD_HEIGHT), 
+                         cv::Scalar(255, 255, 255), 2);
+        }
         return;
     }
 

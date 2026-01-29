@@ -21,6 +21,7 @@ add_executable(BlackjackAI
     src/Hand.cpp
     src/QLearner.cpp
     src/Trainer.cpp
+    src/Renderer.cpp
 )
 # src/AI.cpp
 
@@ -35,3 +36,6 @@ target_link_libraries(BlackjackAI
     ${OpenCV_LIBS} 
     ${SQLITE3_LIBRARIES}
 )
+
+# 7. Copy assets folder to the build directory automatically
+file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/assets DESTINATION ${CMAKE_CURRENT_BINARY_DIR})

@@ -1,8 +1,9 @@
 # BlackJack Simulator AI ♤
+This project explores the implementation of AI in Blackjack using C++. It has the ability to be played manually or via an AI using QLearning as its reinforcement learning. 
 
-Each player and dealer in the blackjack with AI game has a hand in playing cards. The AI algorithm that controls the game decides what to do based on the cards in each player's hand. The blackjack with AI project explores the implementation of AI in Blackjack using C++. The Monte Carlo method is a well-known technique of learning by simulated trial and error, while the Q-Learning algorithm is a form of reinforcement learning.
+Begin from scratch and train 250,000 hands for a new QTable stored in SQLite database, or use the sample one provided.
 
-### Technologies Required 🖥️
+### Technologies Used 🖥️
 - C++ programming language
 - Object Oriented Programming (OOPS)
 - Data Structures & Algorithms
@@ -26,7 +27,7 @@ From the /build directory:
 cmake -DCMAKE_BUILD_TYPE=Debug ..
 ```
 
-### Hard reset if build issues 🔁
+### Hard Reset (if you encounter build issues): 🔁
 Clean the build environment to ensure CMake actually sees your changes.
 ```
 cd /mnt/c/Development/Projects/C++_BlackJack/build
@@ -36,52 +37,56 @@ make
 ```
 
 ### Running the Project 🚀
-Once built, we can execute it:
-
 ```
-/Projects/C++_BlackJack/build$ ./BlackjackAI 
---- Blackjack AI Initializing ---
-SQLite Version: 3.45.1
-Environment check passed!
+./BlackJackAI [Train-AI-or-Not] [Play-Manual-or-Not] [Display-GUI]
 ```
 
-### CommandLine Arguments
-./BlackJackAI [Train-AI-or-Not] [Play-Manual-or-Not]
+**Arguments:**
 
-**Train-AI-or-Not**: 0 = Train, 1 = Load.
-**Play-Manual-or-Not**: 0 = Manual (You Play), 1 = AI (AI Plays)
+- **Train-AI:** ```0``` = Train new model, ```1``` = Load existing model
+- **Play-Mode:** ```0``` = Manual play, ```1``` = AI plays
+- **Display-GUI:** ```0``` = Console only, ```1``` = GUI display
 
-Example to play game, train before game and play manually: 
-```./BlackJackAI 0 0```
+**Examples:**
+```
+./BlackjackAI 0 0 0    # Train AI, you play manually, console only
+./BlackjackAI 1 1 0    # Load AI, AI plays, console only
+./BlackjackAI 0 0 1    # Train AI, you play manually, with GUI
+./BlackjackAI 1 1 1    # Load AI, AI plays, with GUI
+```
+### How the AI works 🧠
 
-Example to play game, load from existing db file and AI will  play: 
-```./BlackJackAI 1 1```
-
-### Q-Learning Implementation 
-**State Definition:** 
+#### Q-Learning State Definition: 
 Each game state is represented by three values:
 
-    Player's current hand total (e.g., 12-21)
-    Dealer's visible card value (e.g., 2-11)
-    Whether the player has an Ace that can be counted as 1 (soft hand flag)
+- Player's current hand total (e.g., 12-21)
+- Dealer's visible card value (e.g., 2-11)
+- Whether the player has an Ace that can be counted as 1 (soft hand flag)
 
-Actions: The AI can take two actions:
+#### Actions:
+    0 = Stand (Stop drawing)
+    1 = Hit (Draw another card)
 
-    Hit (action = 1): Draw another card
-    Stand (action = 0): Stop drawing
+#### Q-Table: 
+A table that stores values for each (state, action) pair. Higher values indicate better decisions for that situation. For example, the AI learns that hitting when you have 12 and the dealer shows a 6 is generally good, so that Q-value is high.
 
-**Q-Table**: A table that stores values for each (state, action) pair. Higher values indicate better decisions for that situation. For example, the AI learns that hitting when you have 12 and the dealer shows a 6 is generally good, so that Q-value is high.
+#### Training Process:
+The Silent Trainer runs 250,000 simulated hands using epsilon-greedy strategy:
 
-**Training Process**
-Silent Trainer (runSilentTrainer()) runs 250,000 simulated hands where:
+- **Exploitation (80%)**: AI picks the best-known action
+- **Exploration (20%)**: AI tries random actions to discover new strategies
 
-- The AI plays hands against itself without human input
-- For each action taken, the Q-value is updated based on the outcome (win/loss)
-- The **epsilon-greedy** strategy balances exploration vs exploitation:
-    
-    **Exploitation**: Most of the time, the AI picks the action with the highest Q-value (plays optimally)
-    
-    **Exploration**: Sometimes (epsilon %), it picks a random action to discover new strategies
-
-**After Training**
+#### After Training:
 Once trained, the Q-Table is saved to a SQLite database (blackjack_brain.db). When you play, the AI looks up each state in the Q-Table and uses the learned knowledge to make decisions — no randomness, just playing optimally.
+
+### Game Features ✨
+- Interactive GUI with card images
+- Manual player input (H for hit, S for stand)
+- AI decision-making with trained Q-Learning model
+- Blackjack detection (instant win on 21)
+- Win/Loss/Tie determination
+- Play multiple rounds in one session
+
+### Game Screen
+![Game Sample](/assets/docs/game_sample.png)
+
